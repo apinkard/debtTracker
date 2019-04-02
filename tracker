@@ -4,6 +4,7 @@ import record
 
 import argparse
 import datetime
+import os.path
 import sys
 
 def parseTransaction(transactionString):
@@ -68,7 +69,7 @@ def main():
     parser.add_argument('command', choices = ['add', 'total', 'show'],
                          metavar = 'command',
                          help='command to execute, i.e. total/add')
-    parser.add_argument('-f', '--file', metavar = 'filename', default='.record',
+    parser.add_argument('-f', '--file', metavar = 'filename', default= os.path.expanduser('~/.record'),
                         help='file to read records from')
     parser.add_argument('-t', '--transaction', metavar = 'transaction',
                         help='transaction with optional comment')
