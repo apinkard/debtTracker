@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import datetime
+import os.path
 
 def parseDate(strDate):
     strDateList = strDate.split('-')
@@ -10,12 +11,11 @@ def parseDate(strDate):
     return datetime.date(year, month, day)
 
 def readFile(fileName):
-    try:
+    if os.path.exists(fileName):
         with open(fileName) as f:
             fileString = f.read()
         return fileString
-    except:
-        return ''
+    return ''
 
 class transaction():
     '''Class which stores data for a single transaction.
@@ -85,11 +85,10 @@ class detailedTransaction(transaction):
                 raise ValueError
             name = wordList[1]
             amount = float(wordList[2])
+            return detailedTransaction(direction, name, amount, comment)
         except:
             print('invalid transaction string :' + transactionString)
-            direction = name = comment = ''
-            amount = 0
-        return detailedTransaction(direction, name, amount, comment)
+            return None
 
     def __repr__(self):
         return transaction.__repr__(self) + r' //' + self.comment

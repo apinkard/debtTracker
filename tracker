@@ -36,6 +36,9 @@ def addTransaction(rec, args):
         sys.exit()
     
     dtransaction = parseTransaction(args.transaction)
+    if not dtransaction:
+        print('provided transaction string is not valid')
+        return
      
     if args.date is not None:
         date = parseDate(args.date)
