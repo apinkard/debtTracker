@@ -34,3 +34,7 @@ $ tracker total
 $ tracker total -n Ben
 $ tracker total -d '12-03-2001'
 ```
+
+
+edit: moved to [splitwise](https://www.splitwise.com/), 
+      as it had most of my desired functionality with added advantage of mobility.
